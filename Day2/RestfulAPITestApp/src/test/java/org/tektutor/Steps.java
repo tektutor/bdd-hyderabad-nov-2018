@@ -89,4 +89,26 @@ public class Steps {
 
 		statusCode = response.getStatusCode();
 	}
+
+	@Given("the record exits")
+	public void the_record_exits() {
+		
+	}
+
+	@When("I invoke the GET endpoint {string}")
+	public void i_invoke_the_GET_endpoint(String endpointUrl) {
+		this.endPointUrl = endpointUrl;
+
+		RestAssured.baseURI = this.endPointUrl; 
+		RequestSpecification request = RestAssured.given();
+		request.header("Content-Type", "application/json");
+		response = request.get("");
+		statusCode = response.getStatusCode();
+	}
+
+	@Then("I expect the training record that matches the id should be retrieved")
+	public void i_expect_the_training_record_that_matches_the_id_should_be_retrieved() {
+		assertEquals(statusCode, 200);
+	}
+
 }

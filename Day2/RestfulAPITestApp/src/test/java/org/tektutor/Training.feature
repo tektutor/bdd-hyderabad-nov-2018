@@ -13,3 +13,8 @@ Feature: Develop a RESTful API that supports CRUD operations for Training object
 		And the duration of the training is "5 days"
 		When I invoke the PUT endpoint "http://localhost:8080/tektutor-restful-ws-1.0.0/rest/trainings/"
 		Then I expect the training object updated in the database. 
+
+	Scenario:  Should be able to a training record via GET given a id.
+		Given the record exits
+		When I invoke the GET endpoint "http://localhost:8080/tektutor-restful-ws-1.0.0/rest/trainings/10"
+		Then I expect the training record that matches the id should be retrieved
